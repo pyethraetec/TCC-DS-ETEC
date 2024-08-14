@@ -65,10 +65,23 @@
                 exit();
             }
 
-            $conexao = mysqli_connect("localhost", "root", "", "usuario");
+            $conexao = mysqli_connect("localhost", "aluno", "aluno.etec", "usuario");
 
             if($conexao == false){
                 die("A conexão falhou: " . mysqli_connect_error());
+            }
+
+            $query2 = mysqli_query($conexao, "SELECT * FROM usuarios WHERE apelido = '$apelido'");
+            if(mysqli_num_rows($query2) >= 1){
+              echo "Apelido já existente!";
+              exit();
+            }
+            
+            $query1 = mysqli_query($conexao, "SELECT * FROM usuarios WHERE email = '$email'");
+
+            if(mysqli_num_rows($query1) >= 1){
+              echo "E-mail já existente!";
+              exit();
             }
 
             $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$data_nasc', '$email', '$senha')");
