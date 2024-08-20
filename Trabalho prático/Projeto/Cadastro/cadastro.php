@@ -87,7 +87,7 @@
             $query = mysqli_query($conexao, "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha) VALUES ('$nome','$apelido','$data_nasc', '$email', '$senha')");
 
             if($query){
-                header("Location: home.php");
+              header("Location: home.php");
                 exit();
             }
             else{
