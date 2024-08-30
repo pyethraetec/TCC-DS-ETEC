@@ -14,10 +14,10 @@
     <div>  
         <div id="Header-perfil">
             <!--<img src="./imagens/amostra-header.png" alt="header">-->
-        </div>
 
-        <div id="Foto-perfil"> 
-            <!--<img src="./imagens/amostra-ft-perfil.png" alt="perfil">-->
+            <div id="Foto-perfil"> 
+                <!--<img src="./imagens/amostra-ft-perfil.png" alt="perfil">-->
+            </div>
         </div>
     </div>
 
@@ -35,8 +35,10 @@
     </div>
 
     <!--Postagem-->
-    <div> 
-        
+    <div id="postagem"> 
+        <div >
+            
+        </div>
     </div>
 
     <!--Feed pessoal-->
@@ -48,6 +50,7 @@
             flex: 1;
             padding: 10px;
             margin: 10px;
+            color:aliceblue;
         }
 
         #info-usuário{
@@ -55,7 +58,8 @@
             width: 300px;
             margin: 20px;
             flex-direction: column;
-            flex: 1;
+            margin-left: 100px;
+            border-radius: 10px;
         }
 
         #Header{
@@ -70,7 +74,12 @@
             width: "80%";
             height: 300px;
             border-radius: 1000;
+            margin-bottom: 150px;
+            background-image: url('./imagens/amostra-header.png');
+            background-repeat: no-repeat;
+            background-size: 100% 300px ;
         }
+
         #Foto-perfil{
             background-color: blueviolet;
             width: 150px;
@@ -78,9 +87,23 @@
             border-radius: 1000px;
             border: 1px;
             padding: 10px;
-            margin-left: 60px;
-            position: absolute;
+            margin-left: 150px;
+            position: absolute; 
             z-index: 1;
+            margin-top: 200px;
+            background-image: url('./imagens/amostra-ft-perfil.png');
+            background-repeat: no-repeat;
+            background-size: 190px 190px ;
+        }
+
+        #postagem{
+            flex: 2;
+            padding: 150px;
+            margin: 10px;
+            color:aliceblue;
+            background-color: aqua;
+            border-radius: 20px;
+            flex-direction: row;
         }
 
     </style>
