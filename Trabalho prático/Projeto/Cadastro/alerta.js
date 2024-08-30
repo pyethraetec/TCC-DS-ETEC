@@ -1,4 +1,4 @@
-let email, nome, usuario, senha, csenha;
+var email, nome, usuario, senha, csenha;
         email = document.getElementById("email");
         nome = document.getElementById("nome");
         usuario = document.getElementById("usuario");
@@ -8,21 +8,21 @@ let email, nome, usuario, senha, csenha;
 
 
 
-function alert22(){
+function cadastro(){
     email.style = "";
     nome.style = "";
     usuario.style = "";
     senha.style = "";
     csenha.style = "";
   if(email.value == ""){
-    alert ("Preencha o 1° campo");
+    alert ("Digite o seu e-mail");
     email.style="border:2px solid red;";
       return false;
 
   }
 
 else if(nome.value == ""){
-    alert ("Preencha o 2° campo");
+    alert ("Digite o seu nome");
     nome.style="border:2px solid red;";
     return false;
 }
@@ -30,18 +30,18 @@ else if(nome.value == ""){
 
 
 else if(usuario == ""){
-  alert ("Preencha o 3° campo");
+  alert ("Qual o seu apelido");
   usuario.style="border:2px solid red;";
 }
 
 else if(senha == ""){
-  alert ("Preencha o 4° campo");
+  alert ("Digite sua senha");
   senha.style="border:2px solid red;";
 }
 
 
-else if(csenha == ""){
-  alert ("Preencha o 5° campo");
+else if(csenha != senha){
+  alert ("As senhas não batem");
   csenha.style="border:2px solid red;";
 }
 

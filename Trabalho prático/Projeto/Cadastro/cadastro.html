@@ -55,34 +55,34 @@
           <table>
             <tr>
                 <td>E-mail:</td>
-                <td><input type="email" name="email" required></td>
+                <td><input type="email" name="email" id="email" required></td>
             </tr>
             <tr>
               <td>Nome:</td>
-              <td><input type="text" name="nome" required></td>
+              <td><input type="text" name="nome" id="nome" required></td>
             </tr>
             <tr>
                 <td>Usuário:</td>
-                <td><input type="text" name="nome" required></td>
+                <td><input type="text" name="nome" id="usuario" required></td>
             </tr>
             
             <tr>
               <td>Insira sua senha:</td>
-              <td><input type="password" name="senha" required></td>
+              <td><input type="password" name="senha" id="senha" required></td>
             </tr>
             <tr>
                 <td>Confirma sua senha:</td>
-                <td><input type="password" name="senha" required></td>
+                <td><input type="password" name="senha" id="csenha" required></td>
             </tr>
             <tr>
                 <td>Selecione sua data de nascimento:</td>
-                <td><input id="date" type="date" /></td>
+                <td><input id="date" type="date"  /></td>
             </tr>
             <tr>
               <td>
                 <br>
                 <!--Botão cadastro-->
-                <button type="button" onclick="alert22()" class="w3-button w3-green w3-large">Cadastrar</button>
+                <button type="button" onclick="cadastro()" class="w3-button w3-green w3-large">Cadastrar</button>
               </td>
               <td align="right">
                 <br>
@@ -100,54 +100,5 @@
           
       </div>
       <script src="alerta.js"></script>
-      <script>
-        let email, nome, usuario, senha, csenha;
-        email = document.getElementById("email");
-        nome = document.getElementById("nome");
-        usuario = document.getElementById("usuario");
-        senha = document.getElementById("senha");
-        csenha = document.getElementById("csenha");
-
-          function clique(){
-            email.style = "";
-            nome.style = "";
-            usuario.style = "";
-            senha.style = "";
-            csenha.style = "";
-          if(email.value == ""){
-            alert ("Preencha o 1° campo");
-            email.style="border:2px solid red;";
-              return false;
-
-          }
-
-        else if(nome.value == ""){
-            alert ("Preencha o 2° campo");
-            nome.style="border:2px solid red;";
-            return false;
-        }
-      
-
-      
-        else if(usuario == ""){
-          alert ("Preencha o 3° campo");
-          usuario.style="border:2px solid red;";
-        }
-
-        else if(senha == ""){
-          alert ("Preencha o 4° campo");
-          senha.style="border:2px solid red;";
-        }
-      
-
-        else if(csenha == ""){
-          alert ("Preencha o 5° campo");
-          csenha.style="border:2px solid red;";
-        }
-
-      
-    return true;
-          }
-      </script>
 </body>
 </html>
