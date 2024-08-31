@@ -10,56 +10,106 @@
     <div id="Header">  
         
     </div>
-    <!--Header-->
+    
     <div>  
+        <!--Header-->
         <div id="Header-perfil">
-            <!--<img src="./imagens/amostra-header.png" alt="header">-->
-
+            <!--Foto perfil-->
             <div id="Foto-perfil"> 
-                <!--<img src="./imagens/amostra-ft-perfil.png" alt="perfil">-->
             </div>
         </div>
     </div>
-
-    <!--Foto perfil-->
     
 
     <!--Caixa info usuário-->
-    <div id="info-usuário">
-        <div id="Caixa">
+    <div id="caixa">
+        <div id="info-usuário">
             <p>Nome</p>
             <p>Apelido</p>
             <p>Bio</p>
             <p>Aniversário</p>
-        </div>    
-    </div>
+        </div>   
+        
+        
+        <div>
+            <!--Postagem-->
+            <div id="postagem"> </div>    
+            <!--Feed pessoal-->
+            <div id="feedPessoal"> 
+                <div id="topo">
+                    <p>foto perfil</p>
+                    <p>nome usuario</p>
+                    <p>status + livro</p>
+                    <p>data</p>
+                    <p>configurações</p>
+                </div>
 
-    <!--Postagem-->
-    <div id="postagem"> 
-        <div >
-            
+                <div id="reacao">
+                    <img src="./imagens/icone-curtida.png" alt="curtida">
+                    <p>quant curtida</p>
+                </div>
+
+                <div id="comentario">
+                    <p></p>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!--Feed pessoal-->
-    <div>   </div>
-
+    </div>     
+        
 
     <style>
-        #Caixa{
-            flex: 1;
-            padding: 10px;
-            margin: 10px;
-            color:aliceblue;
+
+        #caixa {
+            flex-direction: row;
+            display: flex;
+            box-sizing: border-box;
         }
 
         #info-usuário{
             background-color: brown;
-            width: 300px;
-            margin: 20px;
-            flex-direction: column;
             margin-left: 100px;
             border-radius: 10px;
+            color:aliceblue;
+            flex: 1;
+            padding: 20px;
+            max-width: 250px;
+            min-width: 0;
+            max-height: 150px;
+            min-height: 150px;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            margin-top: 130px;
+        }
+
+        #postagem{
+            padding: 30px;
+            color:aliceblue;
+            background-color: aqua;
+            border-radius: 20px;
+            flex: 1;
+            margin: 30px;
+            width: 200px;
+            max-width: 900px;
+            min-width: 0;
+            max-height: 150px;
+            min-height: 150px;
+            margin-left: 200px;
+            flex-grow: 1;
+        }
+
+        #feedPessoal {
+            padding: 30px;
+            color:aliceblue;
+            background-color: rgb(83, 15, 15);
+            border-radius: 20px;
+            margin: 30px;
+            width: 200px;
+            max-width: 680px;
+            min-width: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
         }
 
         #Header{
@@ -71,10 +121,8 @@
 
         #Header-perfil{
             background-color: darkcyan;
-            width: "80%";
+            width: 100%;
             height: 300px;
-            border-radius: 1000;
-            margin-bottom: 150px;
             background-image: url('./imagens/amostra-header.png');
             background-repeat: no-repeat;
             background-size: 100% 300px ;
@@ -96,15 +144,6 @@
             background-size: 190px 190px ;
         }
 
-        #postagem{
-            flex: 2;
-            padding: 150px;
-            margin: 10px;
-            color:aliceblue;
-            background-color: aqua;
-            border-radius: 20px;
-            flex-direction: row;
-        }
 
     </style>
 
