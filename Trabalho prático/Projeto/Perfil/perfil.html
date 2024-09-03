@@ -37,11 +37,13 @@
             <!--Feed pessoal-->
             <div id="feedPessoal"> 
                 <div id="topo">
-                    <p>foto perfil</p>
-                    <p>nome usuario</p>
-                    <p>status + livro</p>
-                    <p>data</p>
-                    <p>configurações</p>
+                    <div><img src="./imagens/icone-curtida.png" alt="curtida" style="width: 50px; height: 50px;" ></div>
+                    <div><p style="text-align:left;margin-left: 5px;color: azure; font-weight: bold;">pmorsss</p>
+                        <p>status + livro</p>
+                            <p>há 10min</p>
+                            <p style="flex: 1;">...</p>
+                    </div>
+                    
                 </div>
 
                 <div id="reacao">
@@ -58,6 +60,11 @@
         
 
     <style>
+
+        #topo {
+            flex-direction: row;
+            display: flex;
+        }
 
         #caixa {
             flex-direction: row;
@@ -104,7 +111,7 @@
             background-color: rgb(83, 15, 15);
             border-radius: 20px;
             margin: 30px;
-            width: 200px;
+            width: 400px;
             max-width: 680px;
             min-width: 10px;
             align-items: center;
