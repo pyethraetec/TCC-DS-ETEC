@@ -38,32 +38,32 @@
             <!--Feed pessoal-->
             <div id="feedPessoal"> 
 
-                <div id="topo">
+                <div id="topo" style="background-color: blueviolet;">
 
                     <!--Foto perfil-->
-                    <div>
-                        <img src="./imagens/icone-curtida.png" alt="curtida" style="width: 50px; height: 50px; margin: 10px;" >
+                    <div id="foto-Postagem">
+
                     </div>
                     
-                    <div style="width: 250px;">
+                    <div style="width: 200px; background-color: rgb(226, 43, 171);">
                         <!--Nome usuário-->
-                        <p style="text-align:left;margin-left: 5px;color: azure; font-weight: bold;display: flex;">pmorsss</p>
+                        <p style="text-align:left;margin-left: 5px; color: azure; font-weight: bold; background-color: rgb(43, 226, 83);">pmorsss</p>
+                        <p style="font-size: smaller; background-color: aqua;">há 10min</p>
                         <!--Feed pessoal-->
-                        <div style="display: flex;">
-                            <p style="margin-left: 5px; flex: 0.5;">está lendo</p>
-                            <p style="margin-left: -15px; flex: 1; color: #219ebc; font-weight: bold;">O Grande Gatsby</p> 
+                        <div style="display: flex; background-color: chocolate;" >
+                            <p style="flex: 0.5;">está lendo</p>
+                            <p style="margin-left: 5px; flex: 1; color: #219ebc; font-weight: bold;">O Grande Gatsby</p> 
                         </div>
                                                                      
                     </div>
 
-                    <div style="display:flex; max-width: 70px;">  
-                        <p style="font-size: small; max-width: 90px;">há 10min</p>
-                        <p style="font-weight: 900;margin-left: 10px;">•••</p>
+                    <div style="background-color: rgb(57, 30, 210);">  
+                        <p style="font-weight: 900; margin-left: 10px; padding: 5px;">•••</p>
                     </div>
                     
                 </div>
 
-                <div id="reacao" style="display: flex; flex-direction: row; margin: 25px;">
+                <div id="reacao" style="background-color: cornflowerblue; display: flex; flex-direction: row; margin: 25px; align-content: center;">
                     <img src="./imagens/icone-curtida.png" style="height: 30px;" alt="curtida">
                     <p>25</p>
                 </div>
@@ -77,6 +77,19 @@
         
 
     <style>
+
+        #foto-Postagem {
+            background-color: blueviolet;
+            width: 30px;
+            height: 30px;
+            border-radius: 1000px;
+            border: 1px;
+            padding: 10px;
+            margin: 10px;
+            background-image: url('./imagens/amostra-ft-perfil.png');
+            background-repeat: no-repeat;
+            background-size: 50px 50px ;
+        }
 
         #topo {
             flex-direction: row;
