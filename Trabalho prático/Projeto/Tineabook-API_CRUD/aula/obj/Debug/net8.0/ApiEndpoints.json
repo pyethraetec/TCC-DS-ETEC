@@ -48,7 +48,7 @@
         "StatusCode": 200
       }
     ],
-    "EndpointName": "cadastroUsuario"
+    "EndpointName": "cadastrarUsuario"
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",

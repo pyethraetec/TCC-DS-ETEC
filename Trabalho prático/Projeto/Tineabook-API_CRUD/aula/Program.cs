@@ -35,91 +35,65 @@ app.MapGet("/consultaUsuarios", () =>
 
 
 //Cadastro Usuários
-app.MapPost("/cadastroUsuario", ([FromBody] JsonObject dados) =>
+app.MapPost("/cadastrarUsuario", ([FromBody] JsonObject dados) =>
 {
-    if(
-        string.IsNullOrEmpty((string)dados["nome"]) || 
-        string.IsNullOrEmpty((string)dados["apelido"]) || 
-        string.IsNullOrEmpty((string)dados["data_nasc"]) || 
-        string.IsNullOrEmpty((string)dados["email"]) || 
-        string.IsNullOrEmpty((string)dados["senha"])|| 
-        string.IsNullOrEmpty((string)dados["bio"]))
+    // Verificando se algum campo necessário está vazio
+    if (
+        string.IsNullOrEmpty((string)dados["nome"]) ||
+        string.IsNullOrEmpty((string)dados["apelido"]) ||
+        string.IsNullOrEmpty((string)dados["data_nasc"]) ||
+        string.IsNullOrEmpty((string)dados["email"]) ||
+        string.IsNullOrEmpty((string)dados["senha"]) ||
+        string.IsNullOrEmpty((string)dados["bio"])
+    )
     {
         return Results.BadRequest(new { erro = "Campos em branco" });
     }
 
-    MySqlConnection conexao = new MySqlConnection();
-    conexao.ConnectionString =
-        "server=localhost;" +
-        "password= ;" +
-        "User Id= root;" +
-        "database=tineabookbd;";
-    conexao.Open();
+    // String de conexão ao banco de dados
+    string connectionString = "server=localhost;password=;User Id=root;database=tineabookbd;";
 
-    MySqlCommand sql = new MySqlCommand(
-        "INSERT INTO aluno(" +
-            "nome," +
-            "apelido," +
-            "data_nasc" +
-            "email" +
-            "senha" +
-            "bio"+
-        ")" +
-        "VALUES(" +
-            "@nome," +
-            "@apelido," +
-            "@data_nasc" +
-            "@email" +
-            "@senha" +
-            "@bio"+
-        ")", 
-        conexao);
-
-
-    sql.Parameters.AddWithValue(
-        "@nome", 
-        dados["nome"]
-        );
-    sql.Parameters.AddWithValue(
-        "@apelido", 
-        dados["apelido"]
-        );
-    sql.Parameters.AddWithValue(
-        "@data_nasc", 
-        dados["data_nasc"]
-        );
-    sql.Parameters.AddWithValue(
-        "@email", 
-        dados["email"]
-        );
-    sql.Parameters.AddWithValue(
-        "@senha", 
-        dados["senha"]
-        );
-    sql.Parameters.AddWithValue(
-        "@bio", 
-        dados["bio"]
-        );
-
-    var retorno = sql.ExecuteNonQuery();
-
-    conexao.Close();
-
-    if(retorno == 1)
+    using (MySqlConnection conexao = new MySqlConnection(connectionString))
     {
-        return Results.Ok();
+        try
+        {
+            conexao.Open();
+
+            MySqlCommand sql = new MySqlCommand(
+                "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha, bio) " +
+                "VALUES (@nome, @apelido, @data_nasc, @email, @senha, @bio)",
+                conexao
+            );
+
+            sql.Parameters.AddWithValue("@nome", dados["nome"]);
+            sql.Parameters.AddWithValue("@apelido", dados["apelido"]);
+            sql.Parameters.AddWithValue("@data_nasc", dados["data_nasc"]);
+            sql.Parameters.AddWithValue("@email", dados["email"]);
+            sql.Parameters.AddWithValue("@senha", dados["senha"]);
+            sql.Parameters.AddWithValue("@bio", dados["bio"]);
+
+            var retorno = sql.ExecuteNonQuery();
+
+            if (retorno == 1)
+            {
+                return Results.Ok("Cadastro realizado com sucesso!");
+            }
+            else
+            {
+                return Results.Problem("Oh não! Seu cadastro deu errado :(");
+            }
+        }
+        catch (Exception error)
+        {
+            return Results.Problem($"Erro ao realizar o cadastro: {error.Message}");
+        }
     }
-    else
-    {
-        return Results.Problem();
-    }
-    
 })
-.WithName("cadastroUsuario");
+.WithName("cadastrarUsuario");
 
 
 
-
+//Alterar informações da conta do usuário
 
 app.MapPost("/alterar/{id}", ([FromBody] JsonObject dados, string id) =>
 {
