@@ -2,7 +2,7 @@
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
     "Method": "\u003C\u003CMain\u003E$\u003Eb__0_2",
-    "RelativePath": "alterar/{id}",
+    "RelativePath": "alterarUsuario/apelido/{idUsuario}",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
@@ -25,12 +25,40 @@
         "StatusCode": 200
       }
     ],
-    "EndpointName": "AlterarAluno"
+    "EndpointName": "alterarUsuarioApelido"
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_3",
+    "RelativePath": "alterarUsuario/bio/{idUsuario}",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dados",
+        "Type": "System.Text.Json.Nodes.JsonObject",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "alterarUsuarioBio"
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
     "Method": "\u003C\u003CMain\u003E$\u003Eb__0_1",
-    "RelativePath": "cadastroUsuario",
+    "RelativePath": "cadastrarUsuario",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
@@ -52,6 +80,23 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_5",
+    "RelativePath": "consultaLivros",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "consultaLivros"
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
     "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
     "RelativePath": "consultaUsuarios",
     "HttpMethod": "GET",
@@ -69,8 +114,8 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_3",
-    "RelativePath": "excluir/{id}",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_4",
+    "RelativePath": "excluirUsuario/{idUsuario}",
     "HttpMethod": "DELETE",
     "IsController": false,
     "Order": 0,
@@ -93,6 +138,6 @@
         "StatusCode": 200
       }
     ],
-    "EndpointName": "ExcluirAluno"
+    "EndpointName": "excluirUsuario"
   }
 ]
