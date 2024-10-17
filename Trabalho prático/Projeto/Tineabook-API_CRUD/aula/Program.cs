@@ -235,17 +235,17 @@ app.MapGet("/consultaLivros", () =>
 
 
 //Cadastro Usuários
-app.MapPost("/cadastrarLivro", ([FromBody] JsonObject dados) =>
-{
+app.MapPost("/cadastrarLivros", ([FromBody] JsonObject dados) => 
+{ 
     // Verificando se algum campo necessário está vazio
     if (
-        string.IsNullOrEmpty((string)dados["nome"]) ||
-        string.IsNullOrEmpty((string)dados["apelido"]) ||
-        string.IsNullOrEmpty((string)dados["data_nasc"]) ||
-        string.IsNullOrEmpty((string)dados["email"]) ||
-        string.IsNullOrEmpty((string)dados["senha"]) ||
-        string.IsNullOrEmpty((string)dados["bio"])
-    )
+        string.IsNullOrEmpty((string)dados["titulo"]) ||
+        string.IsNullOrEmpty((string)dados["autor"]) ||
+        string.IsNullOrEmpty((string)dados["edicao"]) ||
+        string.IsNullOrEmpty((string)dados["total_paginas"]) ||
+        string.IsNullOrEmpty((string)dados["formato_livro"])
+    )   
+
     {
         return Results.BadRequest(new { erro = "Campos em branco" });
     }
@@ -260,17 +260,16 @@ app.MapPost("/cadastrarLivro", ([FromBody] JsonObject dados) =>
             conexao.Open();
 
             MySqlCommand sql = new MySqlCommand(
-                "INSERT INTO usuarios (nome, apelido, data_nasc, email, senha, bio) " +
-                "VALUES (@nome, @apelido, @data_nasc, @email, @senha, @bio)",
+                "INSERT INTO livros (titulo, autor, edicao, total_paginas, formato_livro) " +
+                "VALUES (@titulo, @autor, @edicao, @total_paginas, @formato_livro)",
                 conexao
             );
 
-            sql.Parameters.AddWithValue("@nome", dados["nome"]);
-            sql.Parameters.AddWithValue("@apelido", dados["apelido"]);
-            sql.Parameters.AddWithValue("@data_nasc", dados["data_nasc"]);
-            sql.Parameters.AddWithValue("@email", dados["email"]);
-            sql.Parameters.AddWithValue("@senha", dados["senha"]);
-            sql.Parameters.AddWithValue("@bio", dados["bio"]);
+            sql.Parameters.AddWithValue("@titulo", dados["titulo"]);
+            sql.Parameters.AddWithValue("@autor", dados["autor"]);
+            sql.Parameters.AddWithValue("@edicao", dados["edicao"]);
+            sql.Parameters.AddWithValue("@total_paginas", dados["total_paginas"]);
+            sql.Parameters.AddWithValue("@formato_livro", dados["formato_livro"]);
 
             var retorno = sql.ExecuteNonQuery();
 
@@ -289,7 +288,64 @@ app.MapPost("/cadastrarLivro", ([FromBody] JsonObject dados) =>
         }
     }
 })
-.WithName("cadastrarLivro");
+.WithName("cadastrarLivros");
+
+
+
+app.MapPost("/fazerResenha", ([FromBody] JsonObject dados) =>
+{
+    // Verificando se algum campo necessário está vazio
+    if (
+        string.IsNullOrEmpty((string)dados["titulo"]) ||
+        string.IsNullOrEmpty((string)dados["autor"]) ||
+        string.IsNullOrEmpty((string)dados["edicao"]) ||
+        string.IsNullOrEmpty((string)dados["total_paginas"]) ||
+        string.IsNullOrEmpty((string)dados["formato_livro"])
+    )
+
+    {
+        return Results.BadRequest(new { erro = "Campos em branco" });
+    }
+
+    // String de conexão ao banco de dados
+    string connectionString = "server=localhost;password=;User Id=root;database=tineabookbd;";
+
+    using (MySqlConnection conexao = new MySqlConnection(connectionString))
+    {
+        try
+        {
+            conexao.Open();
+
+            MySqlCommand sql = new MySqlCommand(
+                "INSERT INTO livros (titulo, autor, edicao, total_paginas, formato_livro) " +
+                "VALUES (@titulo, @autor, @edicao, @total_paginas, @formato_livro)",
+                conexao
+            );
+
+            sql.Parameters.AddWithValue("@titulo", dados["titulo"]);
+            sql.Parameters.AddWithValue("@autor", dados["autor"]);
+            sql.Parameters.AddWithValue("@edicao", dados["edicao"]);
+            sql.Parameters.AddWithValue("@total_paginas", dados["total_paginas"]);
+            sql.Parameters.AddWithValue("@formato_livro", dados["formato_livro"]);
+
+            var retorno = sql.ExecuteNonQuery();
+
+            if (retorno == 1)
+            {
+                return Results.Ok("Cadastro realizado com sucesso!");
+            }
+            else
+            {
+                return Results.Problem("Oh não! Seu cadastro deu errado :(");
+            }
+        }
+        catch (Exception error)
+        {
+            return Results.Problem($"Erro ao realizar o cadastro: {error.Message}");
+        }
+    }
+})
+.WithName("fazerResenha");
 
 
 
