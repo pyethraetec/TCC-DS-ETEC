@@ -31,7 +31,7 @@ app.MapGet("/consultaUsuarios", () =>
 
     return Results.Ok(JsonDocument.Parse(JsonConvert.SerializeObject(dados)));
 })
-.WithName("ListarAluno");
+.WithName("consultaUsuarios");
 
 
 //Cadastro Usuários
@@ -93,7 +93,7 @@ app.MapPost("/cadastrarUsuario", ([FromBody] JsonObject dados) =>
 
 
 //Alterar informações da conta do usuário
-app.MapPost("/alterarUsuario/apelido/{idUsuario}", ([FromBody] JsonObject dados, string id) =>
+app.MapPost("/alterarUsuario/apelido/{id}", ([FromBody] JsonObject dados, string id) =>
 {
     if (
         string.IsNullOrEmpty((string)dados["Apelido"])
@@ -137,7 +137,7 @@ app.MapPost("/alterarUsuario/apelido/{idUsuario}", ([FromBody] JsonObject dados,
 
 
 //Alterar informações da conta do usuário
-app.MapPost("/alterarUsuario/bio/{idUsuario}", ([FromBody] JsonObject dados, string id) =>
+app.MapPost("/alterarUsuario/bio/{idUsuario}", ([FromBody] JsonObject dados, string idUsuario) =>
 {
     if (
         string.IsNullOrEmpty((string)dados["bio"])
@@ -158,7 +158,7 @@ app.MapPost("/alterarUsuario/bio/{idUsuario}", ([FromBody] JsonObject dados, str
             //UPDATE TABELA SET COLUNA = ""; WHERE ID = @ID; 
             MySqlCommand sql = new MySqlCommand("UPDATE usuarios SET bio = @bio WHERE id = @id", conexao);
             sql.Parameters.AddWithValue("@bio", dados["Bio"]);
-            sql.Parameters.AddWithValue("@id", id);
+            sql.Parameters.AddWithValue("@id", idUsuario);
 
             var retorno = sql.ExecuteNonQuery();
 
@@ -292,22 +292,20 @@ app.MapPost("/cadastrarLivros", ([FromBody] JsonObject dados) =>
 
 
 
-app.MapPost("/fazerResenha", ([FromBody] JsonObject dados) =>
+app.MapPost("/criarResenha", ([FromBody] JsonObject dados ) =>
 {
-    // Verificando se algum campo necessário está vazio
     if (
-        string.IsNullOrEmpty((string)dados["titulo"]) ||
-        string.IsNullOrEmpty((string)dados["autor"]) ||
-        string.IsNullOrEmpty((string)dados["edicao"]) ||
-        string.IsNullOrEmpty((string)dados["total_paginas"]) ||
-        string.IsNullOrEmpty((string)dados["formato_livro"])
+        string.IsNullOrEmpty((string)dados["id_usuario"]) ||
+        string.IsNullOrEmpty((string)dados["id_livro"]) ||
+        string.IsNullOrEmpty((string)dados["data"]) ||
+        string.IsNullOrEmpty((string)dados["status"]) ||
+        string.IsNullOrEmpty((string)dados["estrelas"]) ||
+        string.IsNullOrEmpty((string)dados["resenha"])       
     )
-
     {
         return Results.BadRequest(new { erro = "Campos em branco" });
     }
 
-    // String de conexão ao banco de dados
     string connectionString = "server=localhost;password=;User Id=root;database=tineabookbd;";
 
     using (MySqlConnection conexao = new MySqlConnection(connectionString))
@@ -317,35 +315,36 @@ app.MapPost("/fazerResenha", ([FromBody] JsonObject dados) =>
             conexao.Open();
 
             MySqlCommand sql = new MySqlCommand(
-                "INSERT INTO livros (titulo, autor, edicao, total_paginas, formato_livro) " +
-                "VALUES (@titulo, @autor, @edicao, @total_paginas, @formato_livro)",
-                conexao
+                "INSERT INTO avaliacao (id_usuario, id_livro, data, status, estrelas, resenha) " +
+                "VALUES (@id_usuario, @id_livro, @data, @status, @estrelas, @resenha)",
+            conexao
             );
 
-            sql.Parameters.AddWithValue("@titulo", dados["titulo"]);
-            sql.Parameters.AddWithValue("@autor", dados["autor"]);
-            sql.Parameters.AddWithValue("@edicao", dados["edicao"]);
-            sql.Parameters.AddWithValue("@total_paginas", dados["total_paginas"]);
-            sql.Parameters.AddWithValue("@formato_livro", dados["formato_livro"]);
+            sql.Parameters.AddWithValue("@id_usuario", dados["id_usuario"]);
+            sql.Parameters.AddWithValue("@id_livro", dados["id_livro"]);
+            sql.Parameters.AddWithValue("@data", dados["data"]);
+            sql.Parameters.AddWithValue("@status", dados["status"]);
+            sql.Parameters.AddWithValue("@estrelas", dados["estrelas"]);
+            sql.Parameters.AddWithValue("@resenha", dados["resenha"]);
 
             var retorno = sql.ExecuteNonQuery();
 
             if (retorno == 1)
             {
-                return Results.Ok("Cadastro realizado com sucesso!");
+                return Results.Ok("Resenha realizada com sucesso!");
             }
             else
             {
-                return Results.Problem("Oh não! Seu cadastro deu errado :(");
+                return Results.Problem("Algo deu errado :(");
             }
         }
         catch (Exception error)
         {
-            return Results.Problem($"Erro ao realizar o cadastro: {error.Message}");
+            return Results.Problem($"Erro ao realizar a resenha: {error.Message}");
         }
     }
 })
-.WithName("fazerResenha");
+.WithName("criarResenha");
 
 
 

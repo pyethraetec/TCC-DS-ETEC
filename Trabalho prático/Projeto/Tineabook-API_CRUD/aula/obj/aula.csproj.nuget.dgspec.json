@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pyethra (dev)\\Documents\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj": {}
+    "C:\\Users\\Aluno\\Documents\\Pyethra\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pyethra (dev)\\Documents\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj": {
+    "C:\\Users\\Aluno\\Documents\\Pyethra\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pyethra (dev)\\Documents\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj",
+        "projectUniqueName": "C:\\Users\\Aluno\\Documents\\Pyethra\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj",
         "projectName": "aula",
-        "projectPath": "C:\\Users\\Pyethra (dev)\\Documents\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj",
-        "packagesPath": "C:\\Users\\Pyethra (dev)\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pyethra (dev)\\Documents\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\obj\\",
+        "projectPath": "C:\\Users\\Aluno\\Documents\\Pyethra\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\aula.csproj",
+        "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aluno\\Documents\\Pyethra\\TCC-DS-ETEC\\Trabalho prático\\Projeto\\Tineabook-API_CRUD\\aula\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Pyethra (dev)\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aluno\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

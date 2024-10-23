@@ -1,16 +1,11 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.22-MariaDB)
-# Date: 2024-09-10 21:32:16
+# Date: 2024-10-22 22:32:23
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
 #
 # Structure for table "avaliacao"
 #
-
-
-INSERT INTO `avaliacao` VALUES ('2','1', '3', '2024-10-22','Lido','5', 'Livro muito bom! Melhor Leitura do ano');
-
-select * from avaliacao
 
 DROP TABLE IF EXISTS `avaliacao`;
 CREATE TABLE `avaliacao` (
@@ -21,11 +16,15 @@ CREATE TABLE `avaliacao` (
   `status` varchar(255) DEFAULT NULL,
   `estrelas` int(11) DEFAULT NULL,
   `resenha` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_hist`)
+  PRIMARY KEY (`id_hist`),
+  KEY `id_usuario` (`id_usuario`),
+  KEY `id_livro` (`id_livro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 #
 # Data for table "avaliacao"
 #
+
 
 #
 # Structure for table "livros"
@@ -49,28 +48,6 @@ CREATE TABLE `livros` (
 INSERT INTO `livros` VALUES (1,'Orgulho e Preconceito','Jane Austen','26',424,'Fisico'),(2,'Guia do Mochileiro das Galáxias\'','Douglas Adams','2',208,'Fisico'),(3,'Hobbit','Tolkien','1',336,'Fisico'),(4,'Alice no País das Maravilhas','Lewis Carroll','Classic Edition',224,'Fisico'),(5,'Pequeno Principe','Antoine de Saint-Exupéry','Padrão',96,'Fisico'),(6,'Percy Jackson: O Ladrão de Raios','Rick Riordan','2',400,'Fisico');
 
 #
-# Structure for table "usuarios"
-#
-
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
-  `Id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) DEFAULT NULL,
-  `apelido` varchar(255) DEFAULT NULL,
-  `data_nasc` date DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `bio` varchar(255) DEFAULT NULL,
- 	PRIMARY KEY (`id_usuario`)
-)
-
-#
-# Data for table "usuarios"
-#
-
-INSERT INTO `usuarios` VALUES (' ', 'Vitor Gabriel','hajzok','2005-10-21','vitor@gmail.com','123', 'ALO');
-
-#
 # Structure for table "postagem-progresso"
 #
 
@@ -84,10 +61,32 @@ CREATE TABLE `postagem-progresso` (
   PRIMARY KEY (`Id_hist`),
   KEY `id_livro` (`id_livro`),
   KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `postagem-progresso_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`),
-  CONSTRAINT `postagem-progresso_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) 
+  CONSTRAINT `postagem-progresso_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 #
 # Data for table "postagem-progresso"
 #
+
+
+#
+# Structure for table "usuarios"
+#
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `Id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `apelido` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `data_nasc` date DEFAULT NULL,
+  `email` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `senha` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `bio` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+#
+# Data for table "usuarios"
+#
+
+INSERT INTO `usuarios` VALUES (1,'Vitor Gabriel','hajzok','2005-10-21','vitor@gmail.com','123','ALO');
